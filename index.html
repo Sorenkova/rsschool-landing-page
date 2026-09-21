@@ -4,6 +4,12 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Coffee House - Home</title>
+    <script>
+      const savedTheme = localStorage.getItem("theme");
+      if (savedTheme) {
+        document.documentElement.setAttribute("data-theme", savedTheme);
+      }
+    </script>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -288,21 +294,41 @@
           </h2>
 
           <div class="socials">
-            <a href="#" class="socials__link" aria-label="Twitter">
+            <a
+              href="https://twitter.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="socials__link"
+              aria-label="Twitter"
+            >
               <img
                 src="assets/img/twitter.svg"
                 alt="Twitter"
                 class="socials__icon"
               />
             </a>
-            <a href="#" class="socials__link" aria-label="Instagram">
+
+            <a
+              href="https://instagram.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="socials__link"
+              aria-label="Instagram"
+            >
               <img
                 src="assets/img/instagram.svg"
                 alt="Instagram"
                 class="socials__icon"
               />
             </a>
-            <a href="#" class="socials__link" aria-label="Facebook">
+
+            <a
+              href="https://facebook.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="socials__link"
+              aria-label="Facebook"
+            >
               <img
                 src="assets/img/facebook.svg"
                 alt="Facebook"
@@ -322,8 +348,15 @@
                 alt=""
                 class="contacts-list__icon"
               />
-              <span>8558 Green Rd., LA</span>
+              <a
+                href="https://maps.google.com/?q=8558+Green+Rd,+LA"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                8558 Green Rd., LA
+              </a>
             </li>
+
             <li class="contacts-list__item">
               <img
                 src="assets/img/phone.svg"
@@ -332,13 +365,20 @@
               />
               <a href="tel:+16035550123">+1 (603) 555-0123</a>
             </li>
+
             <li class="contacts-list__item">
               <img
                 src="assets/img/clock.svg"
                 alt=""
                 class="contacts-list__icon"
               />
-              <span>Mon–Sat: 9:00–23:00</span>
+              <a
+                href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=Coffee+House+Visit&details=Working+hours:+Mon–Sat:+9:00–23:00"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Mon–Sat: 9:00–23:00
+              </a>
             </li>
           </ul>
         </div>
