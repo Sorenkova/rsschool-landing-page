@@ -10,13 +10,13 @@
 }
 
 [data-theme="dark"] {
-  --bg-color: #111111;
-  --text-color: #f5f0ea;
+  --bg-color: #292826;
+  --text-color: #e1d4c9;
   --text-light: #7b7570;
-  --accent-color: #c7b6a9;
-  --card-bg: #222222;
-  --footer-bg: #1f1e1c;
-  --footer-text: #f5f0ea;
+  --accent-color: #b0907a;
+  --card-bg: #403f3d;
+  --footer-bg: #292826;
+  --footer-text: #e1d4c9;
 }
 
 * {
@@ -130,20 +130,36 @@ ul {
 .menu-button {
   background: none;
   border: none;
-  border-radius: 50px;
-  padding: 8px 16px;
+  border-radius: 0;
+  padding: 8px 0;
   cursor: pointer;
-  display: flex;
+  display: inline-flex;
   align-items: center;
   gap: 8px;
   color: var(--text-color);
+  text-decoration: none;
+  position: relative;
   transition: var(--transition);
 }
 
 .menu-button:hover {
+  background: none;
+  border: none;
+}
+
+.menu-button::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 2px;
   background-color: var(--text-color);
-  border-color: var(--text-color);
-  color: var(--bg-color);
+  transition: width 0.3s ease;
+}
+
+.menu-button:hover::after {
+  width: 100%;
 }
 
 .menu-button:hover .burger-line {
@@ -342,6 +358,7 @@ ul {
   border: 1px solid var(--text-light);
   background: none;
   cursor: pointer;
+  flex-shrink: 0;
   transition: var(--transition);
 }
 
@@ -788,6 +805,14 @@ ul {
   padding-left: 20px;
   padding-right: 20px;
   padding-bottom: 20px;
+}
+
+.menu-section {
+  display: none;
+}
+
+.menu-section.active {
+  display: block;
 }
 
 @media (max-width: 1200px) {
