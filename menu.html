@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Coffee House - Menu</title>
     <script>
-      // Мгновенно применяем тему до загрузки стилей и HTML, чтобы не было вспышки
       const savedTheme = localStorage.getItem("theme");
       if (savedTheme) {
         document.documentElement.setAttribute("data-theme", savedTheme);
@@ -58,8 +57,7 @@
           <a href="menu.html" class="menu-button">
             <span class="menu-text">Menu</span>
             <img src="assets/img/coffee-cup.svg" alt="" class="menu-icon-img" />
-            <span class="burger-line"></span>
-            <span class="burger-line"></span>
+            <img src="assets/img/burger.svg" alt="" class="burger-icon" />
           </a>
         </div>
       </div>

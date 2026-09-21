@@ -146,7 +146,6 @@ ul {
 
 .menu-button:hover {
   background: none;
-  border: none;
 }
 
 .menu-button::after {
@@ -164,10 +163,6 @@ ul {
   width: 100%;
 }
 
-.menu-button:hover .burger-line {
-  background-color: var(--bg-color);
-}
-
 .menu-text {
   font-family: "Inter", sans-serif;
   font-size: 16px;
@@ -180,7 +175,7 @@ ul {
   object-fit: contain;
 }
 
-.burger-line {
+.burger-icon {
   display: none;
 }
 
@@ -195,7 +190,20 @@ ul {
     padding: 0;
     border-radius: 50%;
     justify-content: center;
-    gap: 6px;
+    gap: 0;
+    border: 1px solid #c1b6ad;
+    background-color: transparent;
+  }
+
+  .menu-button::after {
+    display: none !important;
+  }
+
+  .menu-button:hover {
+    border-color: var(--text-color) !important;
+    transform: scale(1.03);
+    background-color: transparent;
+    box-shadow: none;
   }
 
   .menu-text,
@@ -203,13 +211,12 @@ ul {
     display: none;
   }
 
-  .burger-line {
+  .burger-icon {
     display: block;
-    width: 16px;
-    height: 2px;
-    background-color: var(--text-color);
-    border-radius: 2px;
-    transition: var(--transition);
+    width: 20px;
+    height: 20px;
+    object-fit: contain;
+    pointer-events: none;
   }
 }
 
