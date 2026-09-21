@@ -82,19 +82,24 @@ ul {
   object-fit: contain;
 }
 
+.nav {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+}
+
 .nav__list {
   display: flex;
   list-style: none;
-  gap: 40px;
+  gap: 45px;
   margin: 0;
-  padding: 0;
   align-items: center;
 }
 
 .nav__link {
   font-family: "Inter", sans-serif;
   font-size: 16px;
-  font-weight: 500;
+  font-weight: 600;
   line-height: 150%;
   color: var(--text-color);
   text-decoration: none;
@@ -107,9 +112,18 @@ ul {
   color: var(--accent-color);
 }
 
+.header__spacer {
+  width: 44px;
+  height: 28px;
+  flex-shrink: 0;
+  display: block;
+}
+
 .header__controls {
+  max-width: 184px;
+  max-height: 44px;
   display: flex;
-  gap: 20px;
+  gap: 24px;
   align-items: center;
 }
 
@@ -139,7 +153,7 @@ ul {
 .menu-text {
   font-family: "Inter", sans-serif;
   font-size: 16px;
-  font-weight: 500;
+  font-weight: 600;
 }
 
 .menu-icon-img {
@@ -185,6 +199,7 @@ ul {
   background: none;
   border: 1px solid #c1b6ad;
   border-radius: 100px;
+  gap: 8px;
   padding: 4px;
   width: 82px;
   height: 40px;
@@ -205,8 +220,8 @@ ul {
 }
 
 .theme-icon {
-  width: 36px;
-  height: 36px;
+  width: 32px;
+  height: 32px;
   border-radius: 50%;
   padding: 6px;
   transition: var(--transition);
@@ -276,7 +291,7 @@ ul {
   color: #403f3d;
   padding: 16px 30px;
   border-radius: 100px;
-  font-weight: 500;
+  font-weight: 600;
   transition: var(--transition);
 }
 
@@ -503,17 +518,24 @@ ul {
 
 .mobile-app__images {
   display: flex;
-  gap: 20px;
+  width: 630px;
+  height: 630px;
+  align-items: center;
+  flex-shrink: 0;
+  justify-content: center;
 }
 
 .mobile-app__phones-img {
-  max-width: 380px;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
 }
 
 .footer {
-  padding: 100px 0 40px;
+  padding-bottom: 40px;
   margin-right: 40px;
   margin-left: 40px;
+  text-align: left;
 }
 
 .footer__container {
@@ -524,19 +546,25 @@ ul {
   border-radius: 40px;
   padding: 100px;
   display: flex;
-  justify-content: space-between;
-  gap: 40px;
+  align-items: flex-start;
+  text-align: left;
+  gap: 130px;
 }
 
 .footer__title {
-  font-size: 40px;
+  font-size: 60px;
   font-weight: 600;
-  margin-bottom: 40px;
+  line-height: 1.25;
+  margin-bottom: 12px;
 }
 
 .footer__title-accent {
+  display: block;
   font-style: italic;
-  font-weight: 400;
+  font-weight: 600;
+  font-size: 60px;
+  color: #b0907a;
+  margin-bottom: 40px;
 }
 
 .socials {
@@ -545,13 +573,14 @@ ul {
 }
 
 .socials__link {
-  width: 52px;
-  height: 52px;
+  width: 60px;
+  height: 60px;
   border: 1px solid rgba(255, 255, 255, 0.2);
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
+  color: var(--footer-text);
   transition: var(--transition);
 }
 
@@ -564,19 +593,36 @@ ul {
 .footer__subtitle {
   font-size: 24px;
   font-weight: 600;
-  margin-bottom: 40px;
+  margin-bottom: 32px;
+  text-align: left;
+}
+
+.footer__col--contacts {
+  padding-top: 32px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  text-align: left;
 }
 
 .contacts-list {
   display: flex;
   flex-direction: column;
-  gap: 20px;
+  gap: 22px;
+  align-items: flex-start;
+  list-style: none;
+  padding: 0;
+  margin: 0;
 }
 
 .contacts-list__item {
   display: flex;
   align-items: center;
-  gap: 16px;
+  gap: 8px;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 150%;
+  text-align: left;
 }
 
 @media (max-width: 768px) {
@@ -644,8 +690,9 @@ ul {
 .menu-tabs {
   display: flex;
   justify-content: center;
+  align-items: center;
   gap: 16px;
-  margin-bottom: 40px;
+  margin: 0 auto 40px auto;
 }
 
 .menu-tab {
@@ -655,10 +702,10 @@ ul {
   background: none;
   border: 1px solid #c1b6ad;
   border-radius: 100px;
-  padding: 8px 20px;
+  padding: 8px 16px 8px 8px;
   font-family: "Inter", sans-serif;
   font-size: 16px;
-  font-weight: 500;
+  font-weight: 600;
   color: var(--text-color);
   cursor: pointer;
   transition: var(--transition);
@@ -737,6 +784,7 @@ ul {
 .menu-card__price {
   font-size: 24px;
   font-weight: 600;
+  line-height: 1.25;
   padding-left: 20px;
   padding-right: 20px;
   padding-bottom: 20px;
