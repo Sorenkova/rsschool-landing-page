@@ -1240,27 +1240,27 @@ h1 {
   }
 }
 
-.show-more-btn {
-  display: block;
-  margin: 50px auto 0;
-  padding: 16px 36px;
-  font-size: 24px;
-  font-weight: 400;
-  background-color: var(--accent-color, #b0907a);
-  color: #fff;
-  border: none;
-  border-radius: 100px;
+.refresh-btn {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  border: 1px solid #665f55;
+  background-color: transparent;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   cursor: pointer;
-  transition:
-    opacity 0.3s ease,
-    transform 0.2s ease;
+  padding: 0;
+  margin: 40px auto 0;
+  transition: background-color 0.3s ease;
 }
 
-.show-more-btn:hover {
-  opacity: 0.85;
-  transform: scale(1.02);
+.refresh-btn:hover {
+  background-color: rgba(102, 95, 85, 0.1);
 }
 
-.show-more-btn.hidden {
-  display: none !important;
+.refresh-icon {
+  width: 24px;
+  height: 24px;
+  object-fit: contain;
 }
