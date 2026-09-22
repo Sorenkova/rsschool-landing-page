@@ -843,10 +843,6 @@ h1 {
     padding: 0 40px;
   }
 
-  .footer {
-    margin-bottom: 40px;
-  }
-
   .footer__container {
     flex-direction: column;
     padding: 40px;
@@ -1236,7 +1232,25 @@ h1 {
   }
 
   .menu-grid {
-    grid-template-columns: 1fr;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+  }
+
+  .menu-tab {
+    padding: 8px 16px;
+    font-size: 14px;
+  }
+
+  .menu-tabs {
+    gap: 10px;
+    margin-bottom: 30px;
+  }
+
+  .menu-page__title {
+    font-size: 60px;
+    line-height: 1.3;
+    margin-bottom: 40px;
   }
 }
 
