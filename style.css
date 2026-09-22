@@ -961,3 +961,28 @@ html[data-theme="dark"] .theme-toggle .theme-icon:last-child .theme-img--moon {
     grid-template-columns: 1fr;
   }
 }
+
+.show-more-btn {
+  display: block;
+  margin: 50px auto 0;
+  padding: 16px 36px;
+  font-size: 24px;
+  font-weight: 400;
+  background-color: var(--accent-color, #b0907a);
+  color: #fff;
+  border: none;
+  border-radius: 100px;
+  cursor: pointer;
+  transition:
+    opacity 0.3s ease,
+    transform 0.2s ease;
+}
+
+.show-more-btn:hover {
+  opacity: 0.85;
+  transform: scale(1.02);
+}
+
+.show-more-btn.hidden {
+  display: none !important;
+}
