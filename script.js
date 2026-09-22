@@ -1,29 +1,50 @@
-const themeToggle = document.querySelector(".theme-toggle");
-const htmlElement = document.documentElement;
+document.addEventListener("DOMContentLoaded", () => {
+  const themeToggle = document.querySelector(".theme-toggle");
+  const htmlElement = document.documentElement;
 
-const savedTheme = localStorage.getItem("theme") || "light";
-htmlElement.setAttribute("data-theme", savedTheme);
+  const applyTheme = (theme) => {
+    if (theme === "dark") {
+      htmlElement.setAttribute("data-theme", "dark");
+    } else {
+      htmlElement.setAttribute("data-theme", "light");
+    }
+  };
 
-themeToggle.addEventListener("click", () => {
-  const currentTheme = htmlElement.getAttribute("data-theme");
-  const newTheme = currentTheme === "dark" ? "light" : "dark";
+  const savedTheme = localStorage.getItem("theme");
+  if (savedTheme) {
+    applyTheme(savedTheme);
+  } else {
+    applyTheme("light");
+  }
 
-  htmlElement.setAttribute("data-theme", newTheme);
-  localStorage.setItem("theme", newTheme);
-});
+  if (themeToggle) {
+    themeToggle.addEventListener("click", () => {
+      const currentTheme = htmlElement.getAttribute("data-theme");
+      const newTheme = currentTheme === "dark" ? "light" : "dark";
 
-document.querySelectorAll(".menu-tab").forEach((button) => {
-  button.addEventListener("click", () => {
-    document
-      .querySelectorAll(".menu-tab")
-      .forEach((btn) => btn.classList.remove("active"));
-    document
-      .querySelectorAll(".menu-section")
-      .forEach((section) => section.classList.remove("active"));
+      applyTheme(newTheme);
+      localStorage.setItem("theme", newTheme);
+    });
+  }
 
-    button.classList.add("active");
+  const tabs = document.querySelectorAll(".menu-tab");
+  const sections = document.querySelectorAll(".menu-section");
 
-    const tabId = button.getAttribute("data-tab");
-    document.getElementById(tabId).classList.add("active");
-  });
+  if (tabs.length > 0 && sections.length > 0) {
+    tabs.forEach((tab) => {
+      tab.addEventListener("click", () => {
+        tabs.forEach((t) => t.classList.remove("active"));
+        sections.forEach((s) => s.classList.remove("active"));
+
+        tab.classList.add("active");
+
+        const targetTab = tab.getAttribute("data-tab");
+
+        const targetSection = document.getElementById(targetTab);
+        if (targetSection) {
+          targetSection.classList.add("active");
+        }
+      });
+    });
+  }
 });
