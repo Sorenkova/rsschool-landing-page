@@ -463,10 +463,16 @@ ul {
   padding: 100px 0;
 }
 
+.about__container {
+  max-width: 1360px;
+  margin: 0 auto;
+}
+
 .about__title {
-  font-size: 40px;
+  font-size: 60px;
   font-weight: 600;
-  max-width: 800px;
+  line-height: 1.25;
+  width: 100%;
   margin-bottom: 80px;
 }
 
@@ -480,11 +486,13 @@ ul {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 40px;
+  align-items: start;
 }
 
 .about__img-wrap {
   border-radius: 20px;
   overflow: hidden;
+  width: 100%;
 }
 
 .about__img {
