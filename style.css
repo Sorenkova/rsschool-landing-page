@@ -19,6 +19,10 @@
   --footer-text: #e1d4c9;
 }
 
+[data-theme="dark"] .logo {
+  content: url("assets/img/logo-dark.svg");
+}
+
 * {
   box-sizing: border-box;
   margin: 0;
@@ -222,9 +226,8 @@ ul {
 
 .theme-toggle {
   background: none;
-  border: 1px solid #c1b6ad;
+  border: 1px solid var(--border-color, #c1b6ad);
   border-radius: 100px;
-  gap: 8px;
   padding: 4px;
   width: 82px;
   height: 40px;
@@ -232,7 +235,7 @@ ul {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  transition: var(--transition);
+  transition: var(--transition, 0.3s ease);
 }
 
 .theme-toggle:hover {
@@ -240,32 +243,58 @@ ul {
   transform: scale(1.03);
 }
 
-.menu-icon,
-.btn__icon,
-.contacts-list__icon,
-.store-btn__icon,
-.socials__icon {
-  width: 20px;
-  height: 20px;
-}
-
 .theme-icon {
   width: 32px;
   height: 32px;
   border-radius: 50%;
   padding: 6px;
-  transition: var(--transition);
+  transition:
+    background-color 0.3s ease,
+    fill 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
-[data-theme="light"] .theme-icon--sun,
-:root:not([data-theme="dark"]) .theme-icon--sun {
-  background-color: var(--accent-color);
+html[data-theme="light"] .theme-toggle .theme-icon:first-child,
+html:not([data-theme="dark"]) .theme-toggle .theme-icon:first-child {
+  background-color: #b0907a;
 }
 
-[data-theme="dark"] .theme-icon--moon {
-  background-color: var(--accent-color);
+html[data-theme="light"] .theme-toggle .theme-icon:last-child,
+html:not([data-theme="dark"]) .theme-toggle .theme-icon:last-child {
+  background-color: transparent;
 }
 
+html[data-theme="dark"] .theme-toggle .theme-icon:first-child {
+  background-color: transparent;
+}
+
+html[data-theme="dark"] .theme-toggle .theme-icon:last-child {
+  background-color: #5c544d;
+}
+
+html[data-theme="light"] .theme-toggle:hover .theme-icon:last-child,
+html:not([data-theme="dark"]) .theme-toggle:hover .theme-icon:last-child {
+  background-color: #5c544d;
+}
+
+html[data-theme="dark"] .theme-toggle:hover .theme-icon:first-child {
+  background-color: #b0907a;
+}
+
+html[data-theme="light"]
+  .theme-toggle:hover
+  .theme-icon:last-child
+  .theme-img--moon,
+html:not([data-theme="dark"])
+  .theme-toggle:hover
+  .theme-icon:last-child
+  .theme-img--moon,
+html[data-theme="dark"] .theme-toggle .theme-icon:last-child .theme-img--moon {
+  filter: brightness(0) saturate(100%) invert(91%) sepia(8%) saturate(350%)
+    hue-rotate(345deg) brightness(95%) contrast(90%);
+}
 .hero {
   padding: 20px 40px 40px 40px;
 }
