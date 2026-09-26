@@ -1,5 +1,5 @@
 document.addEventListener("DOMContentLoaded", () => {
-  // 1. Управление темой интерфейса (светлая / темная)
+  // Управление темой интерфейса
   const themeToggle = document.querySelector(".theme-toggle");
   const htmlElement = document.documentElement;
 
@@ -22,13 +22,131 @@ document.addEventListener("DOMContentLoaded", () => {
     themeToggle.addEventListener("click", () => {
       const currentTheme = htmlElement.getAttribute("data-theme");
       const newTheme = currentTheme === "dark" ? "light" : "dark";
-
       applyTheme(newTheme);
       localStorage.setItem("theme", newTheme);
     });
   }
 
-  // 2. Загрузка данных из products.json и динамическая генерация карточек
+  // Логика модального окна
+  function openModal(product, categoryName, itemNumber) {
+    const modalContainer = document.getElementById("product-modal");
+    if (!modalContainer) return;
+
+    const modalImg = document.getElementById("modal-img");
+    const modalTitle = document.getElementById("modal-title");
+    const modalDescr = document.getElementById("modal-descr");
+    const modalPrice = document.getElementById("modal-price");
+    const sizesContainer = document.getElementById("modal-sizes");
+    const additivesContainer = document.getElementById("modal-additives");
+
+    let basePrice = Number(product.price) || 0;
+    let currentSizeAddPrice = 0;
+    let additivesAddPrice = 0;
+
+    const updateTotalPrice = () => {
+      const total = basePrice + currentSizeAddPrice + additivesAddPrice;
+      modalPrice.textContent = `$${total.toFixed(2)}`;
+    };
+
+    if (modalImg) {
+      modalImg.src = `assets/img/${categoryName}${itemNumber}.png`;
+      modalImg.alt = product.name;
+    }
+    if (modalTitle) modalTitle.textContent = product.name;
+    if (modalDescr) modalDescr.textContent = product.description;
+
+    if (sizesContainer && product.sizes) {
+      sizesContainer.innerHTML = "";
+      let isFirstSize = true;
+
+      Object.entries(product.sizes).forEach(([key, sizeObj]) => {
+        const btn = document.createElement("button");
+        btn.type = "button";
+        btn.classList.add("modal__param-btn");
+        if (isFirstSize) {
+          btn.classList.add("active");
+          currentSizeAddPrice = Number(sizeObj["add-price"]) || 0;
+          isFirstSize = false;
+        }
+
+        btn.innerHTML = `<span>${key.toUpperCase()}</span> <span>${sizeObj.size}</span>`;
+
+        btn.addEventListener("click", () => {
+          sizesContainer
+            .querySelectorAll(".modal__param-btn")
+            .forEach((b) => b.classList.remove("active"));
+          btn.classList.add("active");
+          currentSizeAddPrice = Number(sizeObj["add-price"]) || 0;
+          updateTotalPrice();
+        });
+
+        sizesContainer.appendChild(btn);
+      });
+    }
+
+    if (additivesContainer && product.additives) {
+      additivesContainer.innerHTML = "";
+      let activeAdditives = new Set();
+
+      product.additives.forEach((additive, index) => {
+        const btn = document.createElement("button");
+        btn.type = "button";
+        btn.classList.add("modal__param-btn");
+
+        btn.innerHTML = `<span>${index + 1}</span> <span>${additive.name}</span>`;
+
+        btn.addEventListener("click", () => {
+          btn.classList.toggle("active");
+          const addPriceValue = Number(additive["add-price"]) || 0;
+
+          if (activeAdditives.has(additive.name)) {
+            activeAdditives.delete(additive.name);
+            additivesAddPrice -= addPriceValue;
+          } else {
+            activeAdditives.add(additive.name);
+            additivesAddPrice += addPriceValue;
+          }
+          updateTotalPrice();
+        });
+
+        additivesContainer.appendChild(btn);
+      });
+    }
+
+    updateTotalPrice();
+
+    // Запрет скролла при открытом модальном окне
+    modalContainer.classList.add("open");
+    document.documentElement.style.overflow = "hidden";
+    document.body.style.overflow = "hidden";
+
+    const closeModal = () => {
+      modalContainer.classList.remove("open");
+      document.documentElement.style.overflow = "";
+      document.body.style.overflow = "";
+    };
+
+    const closeBtn = modalContainer.querySelector(".modal__close-btn");
+    const closeActionBtn = document.getElementById("modal-close-btn");
+
+    if (closeBtn) closeBtn.onclick = closeModal;
+    if (closeActionBtn) closeActionBtn.onclick = closeModal;
+
+    modalContainer.onclick = (event) => {
+      if (event.target === modalContainer) closeModal();
+    };
+
+    // Закрытие по Escape
+    const escapeHandler = (e) => {
+      if (e.key === "Escape") {
+        closeModal();
+        document.removeEventListener("keydown", escapeHandler);
+      }
+    };
+    document.addEventListener("keydown", escapeHandler);
+  }
+
+  // Загрузка данных и генерация карточек
   async function initMenu() {
     try {
       const response = await fetch("products.json");
@@ -68,6 +186,10 @@ document.addEventListener("DOMContentLoaded", () => {
             <div class="menu-card__price">$${numericPrice.toFixed(2)}</div>
           `;
 
+          card.addEventListener("click", () => {
+            openModal(product, categoryName, index + 1);
+          });
+
           gridContainer.appendChild(card);
         });
       };
@@ -82,7 +204,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   initMenu();
 
-  // 3. Интерактивное переключение вкладок каталога
+  // Переключение вкладок каталога
   const tabs = document.querySelectorAll(".menu-tab");
   const sections = document.querySelectorAll(".menu-section");
 
