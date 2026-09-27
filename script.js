@@ -115,7 +115,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
     updateTotalPrice();
 
-    // Запрет скролла при открытом модальном окне
     modalContainer.classList.add("open");
     document.documentElement.style.overflow = "hidden";
     document.body.style.overflow = "hidden";
@@ -136,7 +135,6 @@ document.addEventListener("DOMContentLoaded", () => {
       if (event.target === modalContainer) closeModal();
     };
 
-    // Закрытие по Escape
     const escapeHandler = (e) => {
       if (e.key === "Escape") {
         closeModal();
@@ -247,7 +245,6 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   }
 
-  // Закрытие по Escape
   if (menuButton) {
     menuButton.addEventListener("click", (e) => {
       if (window.innerWidth <= 768) {
@@ -309,7 +306,10 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     function updateDots() {
-      const realIndex = (currentIndex - 1 + totalSlides) % totalSlides;
+      let realIndex = currentIndex - 1;
+      if (realIndex >= totalSlides) realIndex = 0;
+      if (realIndex < 0) realIndex = totalSlides - 1;
+
       dots.forEach((dot, i) => {
         dot.classList.toggle("slider__dot--active", i === realIndex);
       });
@@ -332,6 +332,7 @@ document.addEventListener("DOMContentLoaded", () => {
         currentIndex = totalSlides;
         setPosition(false);
       }
+      updateDots();
     });
 
     setPosition(false);
@@ -341,6 +342,39 @@ document.addEventListener("DOMContentLoaded", () => {
       nextBtn.addEventListener("click", () => goTo(currentIndex + 1));
     if (prevBtn)
       prevBtn.addEventListener("click", () => goTo(currentIndex - 1));
-    dots.forEach((dot, i) => dot.addEventListener("click", () => goTo(i + 1)));
+
+    dots.forEach((dot, i) => {
+      dot.addEventListener("click", () => goTo(i + 1));
+    });
+
+    let touchStartX = 0;
+    let touchEndX = 0;
+
+    track.addEventListener(
+      "touchstart",
+      (e) => {
+        touchStartX = e.changedTouches[0].screenX;
+      },
+      { passive: true },
+    );
+
+    track.addEventListener(
+      "touchend",
+      (e) => {
+        touchEndX = e.changedTouches[0].screenX;
+        handleSwipe();
+      },
+      { passive: true },
+    );
+
+    function handleSwipe() {
+      const swipeThreshold = 50;
+      if (touchEndX < touchStartX - swipeThreshold) {
+        goTo(currentIndex + 1);
+      }
+      if (touchEndX > touchStartX + swipeThreshold) {
+        goTo(currentIndex - 1);
+      }
+    }
   }
 });
