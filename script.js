@@ -224,4 +224,62 @@ document.addEventListener("DOMContentLoaded", () => {
       });
     });
   }
+
+  // Управление бургер-меню
+  const menuButton = document.querySelector(".menu-button");
+  const body = document.body;
+  const navLinks = document.querySelectorAll(".nav__link, .nav a");
+
+  function toggleMenu() {
+    const isOpen = body.classList.toggle("menu-open");
+
+    if (menuButton) {
+      menuButton.classList.toggle("is-open", isOpen);
+      menuButton.classList.toggle("active", isOpen);
+    }
+
+    if (isOpen) {
+      document.documentElement.style.overflow = "hidden";
+      body.style.overflow = "hidden";
+    } else {
+      document.documentElement.style.overflow = "";
+      body.style.overflow = "";
+    }
+  }
+
+  // Закрытие по Escape
+  if (menuButton) {
+    menuButton.addEventListener("click", (e) => {
+      if (window.innerWidth <= 768) {
+        e.preventDefault();
+        toggleMenu();
+      }
+    });
+  }
+
+  navLinks.forEach((link) => {
+    link.addEventListener("click", () => {
+      if (body.classList.contains("menu-open")) {
+        toggleMenu();
+      }
+    });
+  });
+
+  window.addEventListener("keydown", (e) => {
+    if (e.key === "Escape" && body.classList.contains("menu-open")) {
+      toggleMenu();
+    }
+  });
+
+  window.addEventListener("resize", () => {
+    if (window.innerWidth > 768 && body.classList.contains("menu-open")) {
+      body.classList.remove("menu-open");
+      if (menuButton) {
+        menuButton.classList.remove("is-open", "active");
+      }
+
+      document.documentElement.style.overflow = "";
+      body.style.overflow = "";
+    }
+  });
 });
