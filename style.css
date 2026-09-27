@@ -195,6 +195,10 @@ ul {
   object-fit: contain;
 }
 
+.nav__item--menu {
+  display: none;
+}
+
 @media (max-width: 768px) {
   .nav {
     position: fixed;
@@ -229,6 +233,35 @@ ul {
     font-size: 24px;
     font-weight: 600;
     padding: 0;
+  }
+
+  .nav__item--menu {
+    display: block;
+    margin-top: 15px;
+  }
+
+  .nav__item--menu .menu-button {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    border: 1px solid #c1b6ad;
+    border-radius: 20px;
+    padding: 10px 24px;
+    background-color: transparent;
+    text-decoration: none;
+    color: var(--text-color);
+  }
+
+  .nav__item--menu .menu-text {
+    display: inline-block;
+    font-size: 20px;
+    font-weight: 600;
+  }
+
+  .nav__item--menu .menu-icon-img {
+    display: inline-block;
+    width: 20px;
+    height: 20px;
   }
 
   .menu-button.active .burger-icon {

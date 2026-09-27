@@ -224,7 +224,7 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   // Управление бургер-меню
-  const menuButton = document.querySelector(".menu-button");
+  const menuButton = document.querySelector(".header__controls .menu-button");
   const body = document.body;
   const navLinks = document.querySelectorAll(".nav__link, .nav a");
 
