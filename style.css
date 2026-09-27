@@ -279,6 +279,46 @@ ul {
   .menu-button.open .icon-close {
     display: block;
   }
+
+  .slider__btn {
+    display: none;
+  }
+
+  .slider__img-wrap,
+  .slider__img-wrap img {
+    width: 100%;
+    max-width: 348px;
+    height: auto;
+    max-height: 348px;
+    aspect-ratio: 1 / 1;
+    object-fit: contain;
+  }
+
+  .slider__item-text {
+    font-weight: 300;
+    color: #403f3d;
+    line-height: 1.4;
+    margin-bottom: 16px;
+  }
+
+  .slider__pagination {
+    display: flex;
+    gap: 8px;
+    justify-content: center;
+    align-items: center;
+    margin-top: 16px;
+  }
+
+  .slider__dot {
+    width: 40px;
+    height: 3px;
+    background-color: rgba(0, 0, 0, 0.2);
+    border-radius: 2px;
+  }
+
+  .slider__dot--active {
+    background-color: #3b302a;
+  }
 }
 
 .theme-toggle {
@@ -474,6 +514,9 @@ h1 {
   background: none;
   cursor: pointer;
   flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   transition: var(--transition);
 }
 
@@ -493,16 +536,33 @@ h1 {
   flex: 1;
   max-width: 480px;
   overflow: hidden;
+  position: relative;
+}
+
+.slider__track {
+  display: flex;
+  transition: transform 0.4s ease-in-out;
 }
 
 .slider__item {
-  display: none;
+  flex: 0 0 100%;
+  display: flex;
   flex-direction: column;
   align-items: center;
 }
 
-.slider__item--active {
+.slider__content {
+  width: 100%;
   display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.slider__img-wrap {
+  width: 100%;
+  display: flex;
+  justify-content: center;
 }
 
 .slider__img-wrap img {
@@ -535,13 +595,16 @@ h1 {
   display: flex;
   justify-content: center;
   gap: 12px;
+  margin-top: 16px;
 }
 
 .slider__dot {
   width: 40px;
   height: 4px;
-  background-color: var(--card-bg);
+  background-color: var(--card-bg, rgba(0, 0, 0, 0.2));
   border-radius: 4px;
+  border: none;
+  padding: 0;
   transition: var(--transition);
   cursor: pointer;
 }
@@ -551,7 +614,7 @@ h1 {
 }
 
 .slider__dot--active {
-  background-color: var(--text-color);
+  background-color: var(--text-color, #3b302a);
 }
 
 .about {

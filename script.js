@@ -282,4 +282,65 @@ document.addEventListener("DOMContentLoaded", () => {
       body.style.overflow = "";
     }
   });
+
+  // Управление слайдером
+  const track = document.querySelector(".slider__track");
+  const dots = document.querySelectorAll(".slider__dot");
+  const prevBtn = document.querySelector(".slider__btn--prev");
+  const nextBtn = document.querySelector(".slider__btn--next");
+
+  if (track) {
+    const realSlides = Array.from(track.children);
+    const totalSlides = realSlides.length;
+
+    const firstClone = realSlides[0].cloneNode(true);
+    const lastClone = realSlides[totalSlides - 1].cloneNode(true);
+    track.appendChild(firstClone);
+    track.insertBefore(lastClone, realSlides[0]);
+
+    let currentIndex = 1;
+    let isAnimating = false;
+
+    function setPosition(withTransition = true) {
+      track.style.transition = withTransition
+        ? "transform 0.4s ease-in-out"
+        : "none";
+      track.style.transform = `translateX(-${currentIndex * 100}%)`;
+    }
+
+    function updateDots() {
+      const realIndex = (currentIndex - 1 + totalSlides) % totalSlides;
+      dots.forEach((dot, i) => {
+        dot.classList.toggle("slider__dot--active", i === realIndex);
+      });
+    }
+
+    function goTo(index) {
+      if (isAnimating) return;
+      isAnimating = true;
+      currentIndex = index;
+      setPosition(true);
+      updateDots();
+    }
+
+    track.addEventListener("transitionend", () => {
+      isAnimating = false;
+      if (currentIndex === totalSlides + 1) {
+        currentIndex = 1;
+        setPosition(false);
+      } else if (currentIndex === 0) {
+        currentIndex = totalSlides;
+        setPosition(false);
+      }
+    });
+
+    setPosition(false);
+    updateDots();
+
+    if (nextBtn)
+      nextBtn.addEventListener("click", () => goTo(currentIndex + 1));
+    if (prevBtn)
+      prevBtn.addEventListener("click", () => goTo(currentIndex - 1));
+    dots.forEach((dot, i) => dot.addEventListener("click", () => goTo(i + 1)));
+  }
 });
