@@ -2054,3 +2054,15 @@ html[data-theme="dark"] .theme-toggle:hover .theme-icon:last-child {
     border-radius: 40px;
   }
 }
+
+@media (max-width: 600px) {
+  .menu-grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  .container {
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+}
