@@ -150,7 +150,10 @@ document.addEventListener("DOMContentLoaded", () => {
       const response = await fetch("products.json");
       const products = await response.json();
 
-      const renderCategoryCards = (categoryName, sectionId) => {
+      const showAllState = { coffee: false, tea: false, dessert: false };
+      const refreshBtn = document.querySelector(".refresh-btn");
+
+      window.renderCategoryCards = (categoryName, sectionId) => {
         const section = document.getElementById(sectionId);
         if (!section) return;
 
@@ -167,7 +170,13 @@ document.addEventListener("DOMContentLoaded", () => {
           (item) => item.category === categoryName,
         );
 
-        filtered.forEach((product, index) => {
+        const isDesktop = window.innerWidth > 768;
+
+        const count =
+          isDesktop || showAllState[categoryName] ? filtered.length : 4;
+        const itemsToDisplay = filtered.slice(0, count);
+
+        itemsToDisplay.forEach((product, index) => {
           const card = document.createElement("div");
           card.classList.add("menu-card");
 
@@ -190,11 +199,41 @@ document.addEventListener("DOMContentLoaded", () => {
 
           gridContainer.appendChild(card);
         });
+
+        if (refreshBtn) {
+          if (
+            !isDesktop &&
+            filtered.length > 4 &&
+            !showAllState[categoryName]
+          ) {
+            refreshBtn.style.display = "flex";
+          } else {
+            refreshBtn.style.display = "none";
+          }
+        }
       };
 
-      renderCategoryCards("coffee", "coffee");
-      renderCategoryCards("tea", "tea");
-      renderCategoryCards("dessert", "dessert");
+      window.renderCategoryCards("coffee", "coffee");
+      window.renderCategoryCards("tea", "tea");
+      window.renderCategoryCards("dessert", "dessert");
+
+      if (refreshBtn) {
+        refreshBtn.onclick = () => {
+          const activeSection = document.querySelector(".menu-section.active");
+          if (!activeSection) return;
+          const categoryName = activeSection.id;
+
+          showAllState[categoryName] = true;
+          window.renderCategoryCards(categoryName, categoryName);
+        };
+      }
+
+      // Отслеживание изменения размера экрана
+      window.addEventListener("resize", () => {
+        const activeSection = document.querySelector(".menu-section.active");
+        if (!activeSection) return;
+        window.renderCategoryCards(activeSection.id, activeSection.id);
+      });
     } catch (error) {
       console.error("Ошибка при загрузке продуктов:", error);
     }
@@ -218,6 +257,9 @@ document.addEventListener("DOMContentLoaded", () => {
         const targetSection = document.getElementById(targetTab);
         if (targetSection) {
           targetSection.classList.add("active");
+          if (window.renderCategoryCards) {
+            window.renderCategoryCards(targetTab, targetTab);
+          }
         }
       });
     });
