@@ -190,9 +190,27 @@ ul {
 .burger-icon,
 .icon-close {
   display: none;
-  width: 24px;
-  height: 24px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 20px;
+  height: 20px;
   object-fit: contain;
+  transition:
+    opacity 0.3s ease-in-out,
+    transform 0.3s ease-in-out;
+}
+
+.burger-icon {
+  opacity: 1;
+  visibility: visible;
+}
+
+.icon-close {
+  opacity: 0;
+  visibility: hidden;
+  transform: translate(-50%, -50%) rotate(-90deg);
 }
 
 .nav__item--menu {
@@ -297,20 +315,29 @@ ul {
 
   .burger-icon {
     display: block;
-    width: 20px;
-    height: 20px;
-    object-fit: contain;
-    pointer-events: none;
+    opacity: 1;
+    visibility: visible;
+  }
+
+  .icon-close {
+    display: block;
+    opacity: 0;
+    visibility: hidden;
+    transform: translate(-50%, -50%) rotate(-90deg);
   }
 
   .menu-button.active .burger-icon,
-  .menu-button.open .burger-icon {
-    display: none;
+  .menu-button.is-open .burger-icon {
+    opacity: 0;
+    visibility: hidden;
+    transform: translate(-50%, -50%) rotate(90deg);
   }
 
   .menu-button.active .icon-close,
-  .menu-button.open .icon-close {
-    display: block;
+  .menu-button.is-open .icon-close {
+    opacity: 1;
+    visibility: visible;
+    transform: translate(-50%, -50%) rotate(0deg);
   }
 
   .slider__btn {
