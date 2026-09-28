@@ -21,7 +21,7 @@
   </head>
   <body>
     <header class="header">
-      <div class="header__container">
+      <div class="container header__container">
         <a href="index.html" class="logo">
           <img src="assets/img/logo.svg" alt="Coffee House Logo" />
         </a>
@@ -37,6 +37,16 @@
               <a href="index.html#mobile-app" class="nav__link">Mobile app</a>
             </li>
             <li><a href="#contacts" class="nav__link">Contact us</a></li>
+            <li class="nav__item nav__item--menu">
+              <a href="menu.html" class="menu-button nav__link-menu">
+                <span class="menu-text">Menu</span>
+                <img
+                  src="assets/img/coffee-cup.svg"
+                  alt=""
+                  class="menu-icon-img"
+                />
+              </a>
+            </li>
           </ul>
         </nav>
         <div class="header__spacer"></div>
@@ -62,6 +72,11 @@
             <span class="menu-text">Menu</span>
             <img src="assets/img/coffee-cup.svg" alt="" class="menu-icon-img" />
             <img src="assets/img/burger.svg" alt="" class="burger-icon" />
+            <img
+              src="assets/img/close.svg"
+              alt="Close Menu"
+              class="icon-close"
+            />
           </a>
         </div>
       </div>
@@ -86,362 +101,15 @@
           </div>
 
           <div class="menu-section active" id="coffee">
-            <div class="menu-grid">
-              <div class="menu-card">
-                <div class="menu-card__img-wrap">
-                  <img
-                    src="assets/img/coffee1.png"
-                    alt="Irish coffee"
-                    class="menu-card__img"
-                  />
-                </div>
-                <div class="menu-card__content">
-                  <h2 class="menu-card__title">Irish coffee</h2>
-                  <p class="menu-card__descr">
-                    Fragrant black coffee with Jameson Irish whiskey and whipped
-                    milk
-                  </p>
-                </div>
-                <div class="menu-card__price">$7.00</div>
-              </div>
-
-              <div class="menu-card">
-                <div class="menu-card__img-wrap">
-                  <img
-                    src="assets/img/coffee2.png"
-                    alt="Kahlua coffee"
-                    class="menu-card__img"
-                  />
-                </div>
-                <div class="menu-card__content">
-                  <h2 class="menu-card__title">Kahlua coffee</h2>
-                  <p class="menu-card__descr">
-                    Classic coffee with milk and Kahlua liqueur under a cap of
-                    frothed milk
-                  </p>
-                </div>
-                <div class="menu-card__price">$7.00</div>
-              </div>
-
-              <div class="menu-card">
-                <div class="menu-card__img-wrap">
-                  <img
-                    src="assets/img/coffee3.png"
-                    alt="Honey raf"
-                    class="menu-card__img"
-                  />
-                </div>
-                <div class="menu-card__content">
-                  <h2 class="menu-card__title">Honey raf</h2>
-                  <p class="menu-card__descr">
-                    Espresso with frothed milk, cream and aromatic honey
-                  </p>
-                </div>
-                <div class="menu-card__price">$5.50</div>
-              </div>
-
-              <div class="menu-card">
-                <div class="menu-card__img-wrap">
-                  <img
-                    src="assets/img/coffee4.png"
-                    alt="Ice cappuccino"
-                    class="menu-card__img"
-                  />
-                </div>
-                <div class="menu-card__content">
-                  <h2 class="menu-card__title">Ice cappuccino</h2>
-                  <p class="menu-card__descr">
-                    Cappuccino with soft thick foam in summer version with ice
-                  </p>
-                </div>
-                <div class="menu-card__price">$5.00</div>
-              </div>
-
-              <div class="menu-card">
-                <div class="menu-card__img-wrap">
-                  <img
-                    src="assets/img/coffee5.png"
-                    alt="Espresso"
-                    class="menu-card__img"
-                  />
-                </div>
-                <div class="menu-card__content">
-                  <h2 class="menu-card__title">Espresso</h2>
-                  <p class="menu-card__descr">Classic black coffee</p>
-                </div>
-                <div class="menu-card__price">$4.50</div>
-              </div>
-
-              <div class="menu-card">
-                <div class="menu-card__img-wrap">
-                  <img
-                    src="assets/img/coffee6.png"
-                    alt="Latte"
-                    class="menu-card__img"
-                  />
-                </div>
-                <div class="menu-card__content">
-                  <h2 class="menu-card__title">Latte</h2>
-                  <p class="menu-card__descr">
-                    Espresso coffee with the addition of steamed milk and dense
-                    milk foam
-                  </p>
-                </div>
-                <div class="menu-card__price">$5.50</div>
-              </div>
-
-              <div class="menu-card">
-                <div class="menu-card__img-wrap">
-                  <img
-                    src="assets/img/coffee7.png"
-                    alt="Latte macchiato"
-                    class="menu-card__img"
-                  />
-                </div>
-                <div class="menu-card__content">
-                  <h2 class="menu-card__title">Latte macchiato</h2>
-                  <p class="menu-card__descr">
-                    Espresso with frothed milk and chocolate
-                  </p>
-                </div>
-                <div class="menu-card__price">$5.50</div>
-              </div>
-
-              <div class="menu-card">
-                <div class="menu-card__img-wrap">
-                  <img
-                    src="assets/img/coffee8.png"
-                    alt="Coffee with cognac"
-                    class="menu-card__img"
-                  />
-                </div>
-                <div class="menu-card__content">
-                  <h2 class="menu-card__title">Coffee with cognac</h2>
-                  <p class="menu-card__descr">
-                    Fragrant black coffee with cognac and whipped cream
-                  </p>
-                </div>
-                <div class="menu-card__price">$6.50</div>
-              </div>
-            </div>
+            <div class="menu-grid"></div>
           </div>
 
           <div class="menu-section" id="tea">
-            <div class="menu-grid">
-              <div class="menu-card">
-                <div class="menu-card__img-wrap">
-                  <img
-                    src="assets/img/tea1.png"
-                    alt="Moroccan"
-                    class="menu-card__img"
-                  />
-                </div>
-                <div class="menu-card__content">
-                  <h2 class="menu-card__title">Moroccan</h2>
-                  <p class="menu-card__descr">
-                    Fragrant black tea with the addition of tangerine, cinnamon,
-                    honey, lemon and mint
-                  </p>
-                </div>
-                <div class="menu-card__price">$4.50</div>
-              </div>
-
-              <div class="menu-card">
-                <div class="menu-card__img-wrap">
-                  <img
-                    src="assets/img/tea2.png"
-                    alt="Ginger"
-                    class="menu-card__img"
-                  />
-                </div>
-                <div class="menu-card__content">
-                  <h2 class="menu-card__title">Ginger</h2>
-                  <p class="menu-card__descr">
-                    Original black tea with fresh ginger, lemon and honey
-                  </p>
-                </div>
-                <div class="menu-card__price">$5.00</div>
-              </div>
-
-              <div class="menu-card">
-                <div class="menu-card__img-wrap">
-                  <img
-                    src="assets/img/tea3.png"
-                    alt="Cranberry"
-                    class="menu-card__img"
-                  />
-                </div>
-                <div class="menu-card__content">
-                  <h2 class="menu-card__title">Cranberry</h2>
-                  <p class="menu-card__descr">
-                    Invigorating black tea with cranberry and honey
-                  </p>
-                </div>
-                <div class="menu-card__price">$5.00</div>
-              </div>
-
-              <div class="menu-card">
-                <div class="menu-card__img-wrap">
-                  <img
-                    src="assets/img/tea4.png"
-                    alt="Sea buckthorn"
-                    class="menu-card__img"
-                  />
-                </div>
-                <div class="menu-card__content">
-                  <h2 class="menu-card__title">Sea buckthorn</h2>
-                  <p class="menu-card__descr">
-                    Toning sweet black tea with sea buckthorn, fresh thyme and
-                    cinnamon
-                  </p>
-                </div>
-                <div class="menu-card__price">$5.50</div>
-              </div>
-            </div>
+            <div class="menu-grid"></div>
           </div>
 
           <div class="menu-section" id="dessert">
-            <div class="menu-grid">
-              <div class="menu-card">
-                <div class="menu-card__img-wrap">
-                  <img
-                    src="assets/img/dessert1.png"
-                    alt="Marble cheesecake"
-                    class="menu-card__img"
-                  />
-                </div>
-                <div class="menu-card__content">
-                  <h2 class="menu-card__title">Marble cheesecake</h2>
-                  <p class="menu-card__descr">
-                    Philadelphia cheese with lemon zest on a light sponge cake
-                    and red currant jam
-                  </p>
-                </div>
-                <div class="menu-card__price">$3.50</div>
-              </div>
-
-              <div class="menu-card">
-                <div class="menu-card__img-wrap">
-                  <img
-                    src="assets/img/dessert2.png"
-                    alt="Red velvet"
-                    class="menu-card__img"
-                  />
-                </div>
-                <div class="menu-card__content">
-                  <h2 class="menu-card__title">Red velvet</h2>
-                  <p class="menu-card__descr">
-                    Layer cake with cream cheese frosting
-                  </p>
-                </div>
-                <div class="menu-card__price">$4.00</div>
-              </div>
-
-              <div class="menu-card">
-                <div class="menu-card__img-wrap">
-                  <img
-                    src="assets/img/dessert3.png"
-                    alt="Cheesecakes"
-                    class="menu-card__img"
-                  />
-                </div>
-                <div class="menu-card__content">
-                  <h2 class="menu-card__title">Cheesecakes</h2>
-                  <p class="menu-card__descr">
-                    Soft cottage cheese pancakes with sour cream and fresh
-                    berries and sprinkled with powdered sugar
-                  </p>
-                </div>
-                <div class="menu-card__price">$4.50</div>
-              </div>
-
-              <div class="menu-card">
-                <div class="menu-card__img-wrap">
-                  <img
-                    src="assets/img/dessert4.png"
-                    alt="Creme brulee"
-                    class="menu-card__img"
-                  />
-                </div>
-                <div class="menu-card__content">
-                  <h2 class="menu-card__title">Creme brulee</h2>
-                  <p class="menu-card__descr">
-                    Delicate creamy dessert in a caramel basket with wild
-                    berries
-                  </p>
-                </div>
-                <div class="menu-card__price">$4.00</div>
-              </div>
-
-              <div class="menu-card">
-                <div class="menu-card__img-wrap">
-                  <img
-                    src="assets/img/dessert5.png"
-                    alt="Pancakes"
-                    class="menu-card__img"
-                  />
-                </div>
-                <div class="menu-card__content">
-                  <h2 class="menu-card__title">Pancakes</h2>
-                  <p class="menu-card__descr">
-                    Tender pancakes with strawberry jam and fresh strawberries
-                  </p>
-                </div>
-                <div class="menu-card__price">$4.50</div>
-              </div>
-
-              <div class="menu-card">
-                <div class="menu-card__img-wrap">
-                  <img
-                    src="assets/img/dessert6.png"
-                    alt="Honey cake"
-                    class="menu-card__img"
-                  />
-                </div>
-                <div class="menu-card__content">
-                  <h2 class="menu-card__title">Honey cake</h2>
-                  <p class="menu-card__descr">
-                    Classic honey cake with delicate custard
-                  </p>
-                </div>
-                <div class="menu-card__price">$4.50</div>
-              </div>
-
-              <div class="menu-card">
-                <div class="menu-card__img-wrap">
-                  <img
-                    src="assets/img/dessert7.png"
-                    alt="Chocolate cake"
-                    class="menu-card__img"
-                  />
-                </div>
-                <div class="menu-card__content">
-                  <h2 class="menu-card__title">Chocolate cake</h2>
-                  <p class="menu-card__descr">
-                    Cake with hot chocolate filling and nuts with dried apricots
-                  </p>
-                </div>
-                <div class="menu-card__price">$5.50</div>
-              </div>
-
-              <div class="menu-card">
-                <div class="menu-card__img-wrap">
-                  <img
-                    src="assets/img/dessert8.png"
-                    alt="Black forest"
-                    class="menu-card__img"
-                  />
-                </div>
-                <div class="menu-card__content">
-                  <h2 class="menu-card__title">Black forest</h2>
-                  <p class="menu-card__descr">
-                    A combination of thin sponge cake with cherry jam and light
-                    chocolate mousse
-                  </p>
-                </div>
-                <div class="menu-card__price">$6.50</div>
-              </div>
-            </div>
+            <div class="menu-grid"></div>
           </div>
         </div>
       </section>
@@ -453,6 +121,71 @@
         />
       </button>
     </main>
+
+    <div class="modal-container" id="product-modal">
+      <div class="modal">
+        <button
+          class="modal__close-btn"
+          type="button"
+          aria-label="Close modal"
+        ></button>
+        <div class="modal__inner">
+          <div class="modal__img-wrap">
+            <img src="" alt="" class="modal__img" id="modal-img" />
+          </div>
+          <div class="modal__content">
+            <h3 class="modal__title" id="modal-title"></h3>
+            <p class="modal__descr" id="modal-descr"></p>
+
+            <div class="modal__param-group">
+              <span class="modal__param-title">Size</span>
+              <div class="modal__param-items" id="modal-sizes"></div>
+            </div>
+
+            <div class="modal__param-group">
+              <span class="modal__param-title">Additives</span>
+              <div class="modal__param-items" id="modal-additives"></div>
+            </div>
+
+            <div class="modal__total">
+              <span class="modal__total-text">Total:</span>
+              <span class="modal__total-price" id="modal-price"></span>
+            </div>
+
+            <div class="modal__advice">
+              <svg
+                class="modal__advice-icon"
+                width="16"
+                height="16"
+                viewBox="0 0 16 16"
+                fill="none"
+              >
+                <path
+                  d="M8 7V11M8 5H8.01M15 8C15 11.866 11.866 15 8 15C4.13401 15 1 11.866 1 8C1 4.13401 4.13401 1 8 1C11.866 1 15 4.13401 15 8Z"
+                  stroke="currentColor"
+                  stroke-width="1.5"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
+              </svg>
+              <span class="modal__advice-text"
+                >The cost is not final. Download our mobile app to see the final
+                price and place your order. Earn loyalty points and enjoy your
+                favorite coffee with up to 20% discount.</span
+              >
+            </div>
+
+            <button
+              class="modal__close-action"
+              type="button"
+              id="modal-close-btn"
+            >
+              Close
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
 
     <footer class="footer" id="contacts">
       <div class="container footer__container">
