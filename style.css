@@ -594,6 +594,7 @@ h1 {
 
 .slider__wrapper {
   flex: 1;
+  width: 100%;
   max-width: 480px;
   overflow: hidden;
   position: relative;
@@ -602,13 +603,16 @@ h1 {
 .slider__track {
   display: flex;
   transition: transform 0.4s ease-in-out;
+  width: 100%;
 }
 
 .slider__item {
   flex: 0 0 100%;
+  width: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
+  box-sizing: border-box;
 }
 
 .slider__content {
@@ -621,13 +625,18 @@ h1 {
 
 .slider__img-wrap {
   width: 100%;
+  max-width: 480px;
+  aspect-ratio: 1 / 1;
   display: flex;
   justify-content: center;
+  align-items: center;
 }
 
 .slider__img-wrap img {
-  width: 480px;
-  height: 480px;
+  width: 100%;
+  height: 100%;
+  max-width: 480px;
+  max-height: 480px;
   object-fit: contain;
   transition: transform 0.3s ease;
 }
