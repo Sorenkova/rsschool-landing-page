@@ -375,6 +375,9 @@ ul {
     height: 3px;
     background-color: rgba(0, 0, 0, 0.2);
     border-radius: 2px;
+    border: none;
+    padding: 0;
+    transition: background-color 0.3s ease;
   }
 
   .slider__dot--active {
@@ -670,13 +673,12 @@ h1 {
 
 .slider__dot {
   width: 40px;
-  height: 4px;
-  background-color: var(--card-bg, rgba(0, 0, 0, 0.2));
-  border-radius: 4px;
+  height: 3px;
+  background-color: rgba(0, 0, 0, 0.2);
+  border-radius: 2px;
   border: none;
   padding: 0;
-  transition: var(--transition);
-  cursor: pointer;
+  transition: background-color 0.3s ease;
 }
 
 .slider__dot:hover {
