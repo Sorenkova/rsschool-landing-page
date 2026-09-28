@@ -376,5 +376,17 @@ document.addEventListener("DOMContentLoaded", () => {
         goTo(currentIndex - 1);
       }
     }
+
+    if (nextBtn)
+      nextBtn.addEventListener("click", () => {
+        goTo(currentIndex + 1);
+        nextBtn.blur();
+      });
+
+    if (prevBtn)
+      prevBtn.addEventListener("click", () => {
+        goTo(currentIndex - 1);
+        prevBtn.blur();
+      });
   }
 });
